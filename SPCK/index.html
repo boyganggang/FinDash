@@ -1,0 +1,33 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <div class="quiz" id="quizBox" style="display:none;">
+    <div class="top">
+      <span id="timer">⏱️ 10s</span>
+      <span id="progress">1 / 15</span>
+    </div>
+
+    <div style="text-align:right;">
+      👤 <span id="userEmail"></span>
+    </div>
+
+    <h2 id="question">Question</h2>
+    <div id="answers"></div>
+
+    <button id="next">Next</button>
+    <button id="logout">Logout</button>
+  </div>
+
+  <script type="module" src="./js/firebase_config.js"></script>
+  <script type="module" src="./js/auth.js"></script>
+  <script src="./js/script.js"></script>
+
+</body>
+</html>
