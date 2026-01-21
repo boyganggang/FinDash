@@ -1,13 +1,27 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <title>Quiz App</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
 
+<body>
+<header class="top-bar">
+  <div class="logo">QUIZ<span>.com</span></div>
+
+  <div class="user-avatar">
+    <img
+      id="avatar"
+      src="https://i.pinimg.com/originals/7c/d3/d4/7cd3d4a24e4821ead74b90cb8a55a692.jpg"
+      alt="avatar"
+    />
+  </div>
+</header>
+
+  <div class="quiz-wrapper">
   <div class="quiz" id="quizBox" style="display:none;">
     <div class="top">
       <span id="timer">⏱️ 10s</span>
@@ -15,19 +29,43 @@
     </div>
 
     <div style="text-align:right;">
-      👤 <span id="userEmail"></span>
+     <span id="userEmail"></span>
     </div>
 
     <h2 id="question">Question</h2>
     <div id="answers"></div>
 
     <button id="next">Next</button>
-    <button id="logout">Logout</button>
   </div>
 
   <script type="module" src="./js/firebase_config.js"></script>
   <script type="module" src="./js/auth.js"></script>
   <script src="./js/script.js"></script>
 
+    </div>
+</div>
 </body>
+<!-- PROFILE MODAL -->
+<div class="profile-overlay" id="profileOverlay">
+  <div class="profile-card">
+    <div class="profile-avatar">
+      <img id="profileAvatar" />
+    </div>
+
+    <button class="change-avatar">Change profile picture</button>
+
+    <div class="profile-field">
+      <label>Username</label>
+      <input id="profileUsername" disabled />
+    </div>
+
+    <div class="profile-field">
+      <label>Email</label>
+      <input id="profileEmail" disabled />
+    </div>
+
+    <button class="logout-btn" id="logoutBtnProfile">Logout</button>
+  </div>
+</div>
+
 </html>
