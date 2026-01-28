@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+<header class="top-bar">
+  <div class="logo">QUIZ<span>.com</span></div>
+
+  <div class="user-avatar">
+    <img id="avatar"
+      src="https://i.pinimg.com/originals/7c/d3/d4/7cd3d4a24e4821ead74b90cb8a55a692.jpg" />
+  </div>
+</header>
+
+<div class="quiz-wrapper">
+  <div class="quiz" id="quizBox">
+    <div class="quiz-top">
+      <span id="progress">1 / 5</span>
+      <span id="userEmail"></span>
+    </div>
+
+    <h2 id="question"></h2>
+    <div id="answers"></div>
+
+    <button id="next">Next</button>
+  </div>
+</div>
+<div class="quiz-wrapper">
+  <div class="quiz" id="quizBox" style="display:none;">
+    <div class="top">
+      <span id="progress">1 / 5</span>
+    </div>
+
+    <div style="text-align:right;">
+      <span id="userEmail"></span>
+    </div>
+<span id="timer">⏱ 10s</span>
+    <h2 id="question"></h2>
+    <div id="answers"></div>
+    <button id="next">Next</button>
+  </div>
+</div>
+
+<!-- PROFILE -->
+<div class="profile-overlay" id="profileOverlay">
+  <div class="profile-card">
+    <input id="profileEmail" disabled />
+    <button id="logoutBtnProfile">Logout</button>
+  </div>
+</div>
+<!-- PROFILE OVERLAY -->
+<div class="profile-overlay" id="profileOverlay">
+  <div class="profile-card">
+    <img id="profileAvatar"
+      src="https://i.pinimg.com/originals/7c/d3/d4/7cd3d4a24e4821ead74b90cb8a55a692.jpg"
+      style="width:80px;height:80px;border-radius:50%;margin-bottom:10px" />
+
+    <input id="profileEmail" disabled />
+
+    <input id="photoURL" placeholder="Dán link ảnh avatar mới" />
+
+    <button onclick="updateAvatar()">Cập nhật avatar</button>
+    <br><br>
+    <button id="logoutBtnProfile">Logout</button>
+  </div>
+</div>
+
+<script type="module" src="./js/auth.js"></script>
+<script src="./js/script.js"></script>
+<script type="module" src="./js/quiz.js"></script>
+</body>
+</html>

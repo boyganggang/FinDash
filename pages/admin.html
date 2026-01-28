@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Quiz</title>
+</head>
+<body>
+  <h2>Admin – Thêm câu hỏi</h2>
+
+  <input id="q" placeholder="Câu hỏi"><br><br>
+  <input id="a1" placeholder="Đáp án A"><br>
+  <input id="a2" placeholder="Đáp án B"><br>
+  <input id="a3" placeholder="Đáp án C"><br>
+  <input id="a4" placeholder="Đáp án D"><br><br>
+
+  <select id="correct">
+    <option value="0">A</option>
+    <option value="1">B</option>
+    <option value="2">C</option>
+    <option value="3">D</option>
+  </select>
+
+  <br><br>
+  <button onclick="add()">Thêm</button>
+
+  <script>
+    function add() {
+      const quiz = JSON.parse(localStorage.getItem("adminQuiz")) || [];
+      quiz.push({
+        q: q.value,
+        a: [a1.value, a2.value, a3.value, a4.value],
+        correct: Number(correct.value),
+      });
+      localStorage.setItem("adminQuiz", JSON.stringify(quiz));
+      alert("Đã thêm câu hỏi!");
+    }
+  </script>
+</body>
+</html>
+<h2>Admin – Quản lý câu hỏi</h2>
+
+<input id="q" placeholder="Câu hỏi">
+<input id="a1" placeholder="A">
+<input id="a2" placeholder="B">
+<input id="a3" placeholder="C">
+<input id="a4" placeholder="D">
+
+<select id="correct">
+  <option value="0">A</option>
+  <option value="1">B</option>
+  <option value="2">C</option>
+  <option value="3">D</option>
+</select>
+
+<button onclick="add()">Thêm</button>
+
+<hr>
+<div id="list"></div>
+
+<script>
+let quiz = JSON.parse(localStorage.getItem("adminQuiz")) || [];
+render();
+
+function render() {
+  list.innerHTML = "";
+  quiz.forEach((q, i) => {
+    list.innerHTML += `
+      <div>
+        <b>${q.q}</b>
+        <button onclick="edit(${i})">Sửa</button>
+        <button onclick="del(${i})">Xóa</button>
+      </div>
+    `;
+  });
+  localStorage.setItem("adminQuiz", JSON.stringify(quiz));
+}
+
+function add() {
+  quiz.push({
+    q: q.value,
+    a: [a1.value, a2.value, a3.value, a4.value],
+    correct: Number(correct.value),
+    explain: "Đây là đáp án đúng vì ..."
+  });
+  render();
+}
+
+function del(i) {
+  quiz.splice(i, 1);
+  render();
+}
+
+function edit(i) {
+  q.value = quiz[i].q;
+  [a1.value, a2.value, a3.value, a4.value] = quiz[i].a;
+  correct.value = quiz[i].correct;
+  quiz.splice(i, 1);
+}
+</script>
